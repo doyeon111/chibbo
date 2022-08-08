@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.board.mapper.BoardMapper">
+	<select id="listBoard" resultType="com.example.demo.board.vo.Board">
+		select * from board order by boardPostNo
+	</select>
+	
+	<select id="findByNo" resultType="com.example.demo.board.vo.Board">
+		select * from board where boardPostNo=#{boardPostNo}
+	</select>
+	
+	<select id="getNextNo" resultType="java.lang.Integer">
+  		select IFNULL(max(boardPostNo), 0)+1 from board
+   	</select>
+   	
+   	<insert id="insertBoard" parameterType="com.example.demo.board.vo.Board">
+		insert into board values(#{boardPostNo}, #{boardNo}, #{boardTitle}, #{boardContent}, 0, now() , now(), #{boardFname}, #{userNo})
+	</insert>
+	
+	<update id="updateBoard" parameterType="com.example.demo.board.vo.Board">
+  		update board set boardTitle=#{boardTitle}, boardContent=#{boardContent}, boardUpdateDate=now(), boardFname=#{boardFname} where boardPostNo=#{boardPostNo} and userNo=#{userNo}
+    </update>
+    
+    <update id="updateHit" parameterType="com.example.demo.board.vo.Board">
+    	update board set boardHit=boardHit+1 where boardPostNo=#{boardPostNo}
+    </update>
+   	
+   	<delete id="deleteBoard">
+  		delete from board where boardPostNo=#{boardPostNo}
+  	</delete>
+  	
+  	<!-- 게시판 카테고리 이동 -->
+  	<select id="goCategory" resultType="com.example.demo.board.vo.Board">
+  		select * from board where boardNo=#{boardNo} order by boardPostNo desc
+  	</select>
+  	
+</mapper>
