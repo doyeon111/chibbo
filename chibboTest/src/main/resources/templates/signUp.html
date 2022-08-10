@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var userno = $("#userNo").val();
+		console.log(userno);
+	});
+</script>
+</head>
+<body>
+	<h2>회원가입</h2>
+	<hr>
+	<form action="/signUp" method="post">
+		<!-- <input type="text" id="userNo" name="userNo" value="${userNo }"> -->
+		아이디: <input type="text" id="userId" name="userId"><br>
+		비밀번호: <input type="password" id="userPassword" name="userPassword"><br>
+	<!-- 	비밀번호 확인: <input type="password" id="userPasswordCheck" name="userPassword"><br> -->
+		이름: <input type="text" id="userName" name="userName"><br>
+		이메일: <input type="email" id="userEmail" name="userEmail"><br>
+		<!-- 관리자여부: <input type="text" id="userRole" name="userRole"><br> -->
+		
+		<input type="submit" value="가입하기" id="signUpBtn">
+	</form>
+</body>
+</html> 

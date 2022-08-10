@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#loginBtn").click(function(){
+			var id = $("#userId").val();
+			var password = $("#userPassword").val();
+			
+			if (id == "") {
+				alert("아이디를 입력하세요.");
+				$("#userId").focus(); 
+				return;
+			}
+			if (password == "") {
+				alert("비밀번호를 입력하세요.");
+				$("#userPassword").focus();
+				return;
+			} 
+		
+			
+		});
+		
+		var userno = $("#userNo").val();
+		console.log(userno);
+		
+	});
+</script>
+</head>
+<body>
+	<h2>로그인</h2>
+	<hr>
+	<form action="/loginCheck" method="post">
+	ID: <input type="text" name="userId" id="userId" placeholder="ID"><br>
+	Password: <input type="password" name="userPassword" id="userPassword" placeholder="Password">
+	<button type="submit" id="loginBtn">로그인</button><br>
+	<a href="signUp">회원가입</a>
+    </form>
+</body>
+</html>
