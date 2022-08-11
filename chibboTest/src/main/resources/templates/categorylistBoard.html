@@ -38,6 +38,7 @@
 				<th>글제목</th>		
 				<th>조회수</th>			
 				<th>작성날짜</th>	
+				<th>수정날짜</th>	
 				<th>작성자</th>	
 					
 					
@@ -50,6 +51,7 @@
 				<td><a th:href="@{/detailBoard/{boardNo}/{boardPostNo}(boardNo=${b.boardNo}, boardPostNo=${b.boardPostNo})}" th:text="${b.boardTitle}" id="boardNo"></a></td>
 				<td th:text="${b.boardHit}"></td>
 				<td th:text="${#dates.format(b.boardCreateDate, 'yyyy-MM-dd')}"></td>
+				<td th:text="${#dates.format(b.boardUpdateDate, 'yyyy-MM-dd')}"></td>
 				<td th:text="${b.userNo}"></td>
 			</tr>
 		</tbody>

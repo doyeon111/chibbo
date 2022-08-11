@@ -14,7 +14,7 @@ public class Board {
 	private String boardContent;
 	private int boardHit;
 	private Date boardCreateDate;
-	private Date boardupdateDate;
+	private Date boardUpdateDate;
 	private String boardFname;
 	private MultipartFile boardUploadFile;
 	private int userNo;

@@ -29,6 +29,7 @@
 	<p>제목: <span th:text="${b.boardTitle}"></span></p><br>
 	<p>작성자: <span id="userId" th:value="${u.userId}" th:text="${u.userId}"></span></p><br>
 	<p>작성날짜: <span th:text="${#dates.format(b.boardCreateDate, 'yyyy-MM-dd')}"></span></p><br>
+	<p>수정날짜: <span th:text="${#dates.format(b.boardUpdateDate, 'yyyy-MM-dd')}"></span></p><br>
 	<p>조회수: <span th:text="${b.boardHit}"></span></p><br>
 	<p>글내용: <br></p>
 		<textarea id="summernote" rows="10" cols="80" readonly="readonly" th:text="${b.boardContent}"></textarea><br>
