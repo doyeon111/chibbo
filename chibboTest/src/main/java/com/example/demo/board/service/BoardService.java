@@ -1,10 +1,13 @@
 package com.example.demo.board.service;
 
+import java.awt.print.Pageable;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.board.mapper.BoardMapper;
@@ -16,9 +19,9 @@ public class BoardService {
 	private BoardMapper boardMapper;
 	
 	//게시물 목록
-	public List<Board> listBoard(HashMap map) {
+	public List<Board> listBoard() {
 		List<Board> list = null;
-		return boardMapper.listBoard(map);
+		return boardMapper.listBoard();
 	}
 	 
 	//게시물 등록
@@ -66,4 +69,9 @@ public class BoardService {
 		return boardMapper.totalRecord();
 	}
 	
+	@Transactional
+	public Page<Board> getBoardList(Pageable pageable) {
+		return boardMapper.getBoardList(pageable);
+				
+	}
 }

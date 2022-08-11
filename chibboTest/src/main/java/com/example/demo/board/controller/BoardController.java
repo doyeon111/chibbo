@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +27,8 @@ import com.example.demo.board.service.BoardService;
 import com.example.demo.board.vo.Board;
 import com.example.demo.userinfo.service.UserInfoService;
 import com.example.demo.userinfo.vo.UserInfo;
+
+import net.bytebuddy.asm.Advice.OffsetMapping.Sort;
 
 
 @Controller
@@ -49,6 +53,7 @@ public class BoardController {
 		//System.out.println("****setUserInfo()****");
 		return new UserInfo();
 	}
+
 	
 	
 	@RequestMapping("/listBoard")
@@ -71,7 +76,7 @@ public class BoardController {
 		map.put("end", end);
 		
 		model.addAttribute("totalPage", totalPage);
-		model.addAttribute("list", boardService.listBoard(map));
+		model.addAttribute("list", boardService.listBoard());
 	} 
 	
 	
@@ -83,6 +88,7 @@ public class BoardController {
 		model.addAttribute("boardCategory", boardCategory);
 		model.addAttribute("listLength", boardCategory.size()); //totalsize 
 		mav.addObject("u", userinfoService.findByUserNo((Integer)b.getUserNo()));
+		model.addAttribute("boardNo", (Integer)boardNo);
 		//System.out.println(boardCategory);
 		
 		return mav;
