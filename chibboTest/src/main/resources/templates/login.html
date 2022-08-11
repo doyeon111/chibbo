@@ -1,6 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>취뽀 커뮤니티</title>
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+       <!--  Core theme CSS (includes Bootstrap) -->
+        <link href="css/styles.css" rel="stylesheet" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -29,15 +37,55 @@
 		
 	});
 </script>
+<style type="text/css">
+	.loginForm {
+		text-align: center;
+		color: white;
+	}
+	
+	.form-control {
+		 width:200px;
+		 text-align:center;
+		 margin: auto;
+	}
+	
+</style>
 </head>
 <body>
-	<h2>로그인</h2>
-	<hr>
-	<form action="/loginCheck" method="post">
-	ID: <input type="text" name="userId" id="userId" placeholder="ID"><br>
-	Password: <input type="password" name="userPassword" id="userPassword" placeholder="Password">
-	<button type="submit" id="loginBtn">로그인</button><br>
-	<a href="signUp">회원가입</a>
-    </form>
+
+<!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/home">취뽀 커뮤니티</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/signUp">signup</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/listBoard">board</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header - set the background image for the header in the line below-->
+        <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
+            <div class="text-center my-5">
+                <!-- <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." /> -->
+                <h1 class="text-white fs-3 fw-bolder">로그인</h1>
+                <p class="text-white-50 mb-0">Login</p>
+            </div>
+    <fieldset class="loginForm">
+    	<form action="/loginCheck" method="post">
+		ID: <input class="form-control" type="text" name="userId" id="userId" placeholder="ID"><br>
+		Password: <input type="password" class="form-control" name="userPassword" id="userPassword" placeholder="Password"><br>
+		<button class="btn btn-light" type="submit" id="loginBtn">로그인</button>&nbsp;<a class="btn btn-light" href="signUp">회원가입</a>
+   	 	</form>
+    </fieldset>
+	
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </header>
+    
+     <th:block th:replace="fragments/footer :: footerFragment"></th:block>
 </body>
 </html>

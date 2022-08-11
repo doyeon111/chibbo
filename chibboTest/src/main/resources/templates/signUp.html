@@ -1,7 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>취뽀 커뮤니티</title>
+        <!-- Favicon-->
+        <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -10,20 +18,58 @@
 		console.log(userno);
 	});
 </script>
+<style type="text/css">
+	.signUpForm {
+		text-align: center;
+		color: white;
+	}
+	
+	.form-control {
+		 width:200px;
+		 text-align:center;
+		 margin: auto;
+	}
+</style>
 </head>
 <body>
-	<h2>회원가입</h2>
-	<hr>
+  <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/home">취뽀 커뮤니티</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/signUp">signup</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/listBoard">board</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header - set the background image for the header in the line below-->
+        <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
+            <div class="text-center my-5">
+                <!-- <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." /> -->
+                <h1 class="text-white fs-3 fw-bolder">회원가입</h1>
+                <p class="text-white-50 mb-0">sign up</p>
+            </div>
+	<fieldset class="signUpForm">
 	<form action="/signUp" method="post">
 		<!-- <input type="text" id="userNo" name="userNo" value="${userNo }"> -->
-		아이디: <input type="text" id="userId" name="userId"><br>
-		비밀번호: <input type="password" id="userPassword" name="userPassword"><br>
+		아이디: <input class="form-control" type="text" id="userId" name="userId" placeholder="ID"><br>
+		비밀번호: <input class="form-control" type="password" id="userPassword" name="userPassword" placeholder="password"><br>
 	<!-- 	비밀번호 확인: <input type="password" id="userPasswordCheck" name="userPassword"><br> -->
-		이름: <input type="text" id="userName" name="userName"><br>
-		이메일: <input type="email" id="userEmail" name="userEmail"><br>
+		이름: <input class="form-control" type="text" id="userName" name="userName" placeholder="name"><br>
+		이메일: <input class="form-control" type="email" id="userEmail" name="userEmail" placeholder="email"><br>
 		<!-- 관리자여부: <input type="text" id="userRole" name="userRole"><br> -->
 		
-		<input type="submit" value="가입하기" id="signUpBtn">
+		<input class="btn btn-light" type="submit" value="가입하기" id="signUpBtn">
 	</form>
+	</fieldset>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</header>
+	
+	<th:block th:replace="fragments/footer :: footerFragment"></th:block>
 </body>
 </html> 

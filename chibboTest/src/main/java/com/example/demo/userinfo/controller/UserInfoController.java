@@ -61,7 +61,7 @@ public class UserInfoController {
     	UserInfo logout = (UserInfo)session.getAttribute("userInfo");
     	
     	if(logout != null) {
-    		session.invalidate();
+    		session.invalidate(); 
     		System.out.println("userInfo" + logout);
     	}
     	
