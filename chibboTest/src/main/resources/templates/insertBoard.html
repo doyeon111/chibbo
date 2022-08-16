@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 <!-- include summernote css/js-->
@@ -13,12 +13,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
 <script src="/resources/js/summernote-ko-KR.js"></script>
+<link href="css/styles.css" rel="stylesheet" />
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<th:block th:replace="fragments/header :: headerFragment"></th:block>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	  $('#summernote').summernote({
  	    	placeholder: 'content',
 	        minHeight: 370,
 	        maxHeight: null,
+	        width: 1000,
 	        focus: true, 
 	        lang : 'ko-KR'
 	  });
@@ -28,8 +35,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<h2>글 작성</h2>
-	<hr>
+	<br>
 	<th:block th:switch="${boardNo}">
 				<p th:case="1" id="category">공지사항</p>
 				<p th:case="2" id="category">취업후기 게시판</p>
@@ -41,11 +47,14 @@ $(document).ready(function() {
 		<!-- <input type="hidden" name="userNo" th:value="${userinfo.userNo}" th:text="${userinfo.userNo}"> -->
 		<!-- 게시판번호: <input type="text" th:name="boardNo"><br><br> -->
 		글내용: <br>
-		<textarea id="summernote" rows="10" cols="80" th:name="boardContent" placeholder="글을 작성하세요."></textarea>
+		<textarea id="summernote" rows="10" cols="80" th:name="boardContent" placeholder="글을 작성하세요."></textarea><br>
 		파일: <input type="file" th:name="boardUploadFile"><br><br>
-		<input type="submit" value="등록">
+		<input type="submit" value="등록" class="btn btn-dark">
 		&nbsp;&nbsp;
-		<input type="reset" value="취소">
+		<input type="reset" value="취소" class="btn btn-dark">
+		<br><br>
 	</form>
+	
+	<th:block th:replace="fragments/footer :: footerFragment"></th:block>
 </body>
 </html>

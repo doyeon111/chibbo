@@ -41,10 +41,10 @@ public class BoardController {
 	
 	
 	//페이징 처리와 관련된 변수
-	public int pageSIZE = 10; //한 화면에 보여줄 레코드의 수
-	public int totalRecord = 0; // 전체 레코드의 수
-	public int totalPage = 1; // 전체 페이지의 수
-	
+	/*
+	 * public int pageSIZE = 10; //한 화면에 보여줄 레코드의 수 public int totalRecord = 0; //
+	 * 전체 레코드의 수 public int totalPage = 1; // 전체 페이지의 수
+	 */	
 	
 	
 	//@ModelAttribute는 @RequestMapping이 실행되기 전 Model의 "userinfo" 키 값을 초기화해주는 역할을 합니다.
@@ -58,24 +58,24 @@ public class BoardController {
 	
 	@RequestMapping("/listBoard")
 	public void listBoard(Model model, @RequestParam(value="pageNUM", defaultValue = "1") int pageNUM) { // pageNUM의 기본페이지는 1페이지로 설정
-		System.out.println("pageNUM: " + pageNUM);
-		totalRecord = boardService.totalRecord();
+//		System.out.println("pageNUM: " + pageNUM);
+//		totalRecord = boardService.totalRecord();
+//		
+//		//레코드 나누기 사이즈를 하였을 때 나머지 수가 있으면 반올림
+//		totalPage = (int)Math.ceil(totalRecord / (double) pageSIZE); 
+//		
+//		int start = (pageNUM - 1) * pageSIZE + 1;
+//		int end = start + pageSIZE - 1;
+//		
+//		if(end > totalRecord) {
+//			end = totalRecord;
+//		}
 		
-		//레코드 나누기 사이즈를 하였을 때 나머지 수가 있으면 반올림
-		totalPage = (int)Math.ceil(totalRecord / (double) pageSIZE); 
-		
-		int start = (pageNUM - 1) * pageSIZE + 1;
-		int end = start + pageSIZE - 1;
-		
-		if(end > totalRecord) {
-			end = totalRecord;
-		}
-		
-		HashMap map = new HashMap();
-		map.put("start", start);
-		map.put("end", end);
-		
-		model.addAttribute("totalPage", totalPage);
+//		HashMap map = new HashMap();
+//		map.put("start", start);
+//		map.put("end", end);
+//		
+//		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("list", boardService.listBoard());
 	} 
 	
@@ -169,12 +169,7 @@ public class BoardController {
 		}
 		
 		
-		
-		
 		ModelAndView mav = new ModelAndView("redirect:/listBoard");
-		
-		
-		 
 		
 		
 		int boardPostNo = boardService.getNextNo();

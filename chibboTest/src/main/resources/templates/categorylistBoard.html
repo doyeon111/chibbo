@@ -23,14 +23,36 @@
 </script> 
 <style type="text/css">
 	a {
-		text-decoration-line : none;
 		text-decoration : none;
+		text-decoration-line: none;
 	}
+	
+
+	
+	#boardTitle:visited {
+		color: purple;
+		text-decoration: none;
+	}
+	
+	#boardTitle:hover {
+		color: red;
+	}
+
 	
 	.btnGroup {
 		margin: auto;
 		text-align: center;
 	}
+	
+	.btnPost, #btnPost {
+		color: white;
+		margin: auto;
+		text-align: center;
+		text-decoration-line : none;
+		text-decoration : none;
+	}
+	
+	
 	
 </style>
 <th:block th:replace="fragments/header :: headerFragment"></th:block>
@@ -70,7 +92,7 @@
 			<tr th:each="b : ${boardCategory}">
 				<td th:text="${b.boardPostNo}"></td>
 				<!-- <td><a th:href="@{'/detailBoard/'+${b.boardNo}/${b.boardPostNo}}" th:text="${b.boardTitle}" id="boardNo"></a></td> -->
-				<td><a th:href="@{/detailBoard/{boardNo}/{boardPostNo}(boardNo=${b.boardNo}, boardPostNo=${b.boardPostNo})}" th:text="${b.boardTitle}" id="boardNo"></a></td>
+				<td><a th:href="@{/detailBoard/{boardNo}/{boardPostNo}(boardNo=${b.boardNo}, boardPostNo=${b.boardPostNo})}" th:text="${b.boardTitle}" id="boardTitle"></a></td>
 				<td th:text="${b.boardHit}"></td>
 				<td th:text="${#dates.format(b.boardCreateDate, 'yyyy-MM-dd')}"></td>
 				<td th:text="${#dates.format(b.boardUpdateDate, 'yyyy-MM-dd')}"></td>
@@ -82,10 +104,12 @@
 	
 	
 	<th:block th:switch="${boardNo}">
-    	<button class="btn btn-dark" id="btnPost" th:case="1" th:if="${session.userNo == 1}"><a class="btn btn-dark" th:href="@{/insertBoard/{boardNo}(boardNo=${boardNo})}">글쓰기</a></button>
-    	<button class="btn btn-dark" id="btnPost" th:case="2" th:if="${session.userNo != null}"><a class="btn btn-dark" th:href="@{/insertBoard/{boardNo}(boardNo=${boardNo})}">글쓰기</a></button>
+ 		<div class="btnPost">
+    		<button class="btn btn-dark" id="btnPost" th:case="1" th:if="${session.userNo == 1}"><a th:href="@{/insertBoard/{boardNo}(boardNo=${boardNo})}">글쓰기</a></button>
+    		<button class="btn btn-dark" id="btnPost" th:case="2" th:if="${session.userNo != null}"><a th:href="@{/insertBoard/{boardNo}(boardNo=${boardNo})}">글쓰기</a></button>
+		</div>
 	</th:block>
-	
+	<br>
 	<th:block th:replace="fragments/footer :: footerFragment"></th:block>
 </body>
 </html>
